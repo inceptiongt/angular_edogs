@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>询价篮</title>
+	<link rel="stylesheet" href="css/global.css">
+	<link rel="stylesheet" href="css/enquiryCar.css">
+	<link rel="stylesheet" href="js/layer/layer.css">
+
+</head>
+<body ng-app="myapp">
+<ng-include src="'templates/header.html'" ></ng-include>
+<ng-include src="'templates/headersub.html'" ></ng-include>
+<section class="content" ng-controller="enquiryCarCtrl">
+	<!--ng-controller="enquiryCarCtrl"-->
+	<!--询价篮-->
+	<div class="ec-car-list">询价篮</div>
+	<div class=" ec-car-content">
+		<div class="ec-car-list-titel">
+			<div class="left ec-select">
+				<input type="checkbox"  ng-click="checkAll(allCheck)" ng-model="allCheck">
+				<span>全选</span>
+			</div>
+			<div class="left ec-product-name">产品品名</div>
+			<div class="left ec-product-size">产品规格</div>
+			<div class="left ec-product-code">订货编码</div>
+			<div class="left ec-product-amount">数量</div>
+			<div class="left ec-operation">操作</div>
+		</div>
+		<div class="ec-car-list-content" ng-repeat="item in infoList" ng-hide="p[$index]">
+			<div class="delatelist">
+				<div class="left ec-select">
+					<input type="checkbox" id="$index" ng-model="check[$index]" ng-click="count()" ng-checked="check[$index]">
+					<img ng-src="{{'http://103.38.252.35:8888' +item.CI_ImgUrl}}" alt="" width="54">
+				</div>
+				<div class="left ec-product-name" ng-bind="item.CI_Name"></div>
+				<div class="left ec-product-size" ng-bind="item.CI_Brand" ></div>
+				<div class="left ec-product-code" ng-bind="item.CI_Number" ></div>
+				<div class="left ec-product-amount">
+					<img class="plus" src="images/ec_amount_minus.fw.png" alt="" ng-click="updateInfo($index,item.CI_ID,item.Count,-1)">
+					<input type="text"  ng-model="item.Count">
+					<img src="images/ec_amount_plus.fw.png" alt="" ng-click="updateInfo($index,item.CI_ID,item.Count,1)">
+				</div>
+				<div class="left ec-operation" ng-click="deleteInfo(item.CI_ID,item,$index)">删除</div>
+			</div>
+		</div>
+	</div>
+	<!--自定义询价单-->
+	<form>
+	<div class="ec-define-list ec-car-list">自定义询价单</div>
+	<div class="ec-define-content">
+		<div class="ec-upload-file">
+			<span>上传附件：</span>
+			<input type="file">
+		</div>
+		<div class="ec-order-tips">
+			<span>订单说明：</span>
+			<textarea name="" id="" cols="30" rows="10" ng-model="orderTips"></textarea>
+		</div>
+	</div>
+	<!--联系信息-->
+
+	<div class="ec-contact-msg ec-car-list">联系信息</div>
+	<div class="ec-contact-content">
+		<div class="ec-contact-cell ec-name"><span class="ec-contact-left-span">真实姓名：</span>
+			<input type="text" class="name" ng-model="msg.CI_Name">
+			<select name="sex" class="sex" ng-model="msg.CI_Sex" >
+				<option value ="1" selected>男</option>
+				<option value ="0">女</option>
+			</select>
+		</div>
+		<div class="ec-contact-cell ec-company-name"><span class="ec-contact-left-span">公司名称：</span>
+			<input type="text" ng-model="msg.CI_CompanyName">
+		</div>
+		<div class="ec-contact-cell ec-phone-num"><span class="ec-contact-left-span">手机号码：</span>
+			<input type="text" ng-model="msg.CI_MobilePhoneNo">
+		</div>
+		<div class="ec-contact-cell ec-email"><span class="ec-contact-left-span">邮箱：</span>
+			<input type="text" ng-model="msg.CI_Email">
+		</div>
+		<div class="ec-contact-cell ec-tel-num"><span class="ec-contact-left-span">固定电话：</span>
+			<input type="text" ng-model="telNum">
+		</div>
+	</div>
+	<!--去询价按钮-->
+	<div class="ec-goto-enquiry">
+		<button class="right ec-btn" ng-click="submit()" >去询价</button>
+		<!--<div class="right ec-btn" ng-click="submit()">去询价</div>-->
+		<div class="right ec-goto-font">
+			<span>已选</span><span class="ec-goto-num" ng-bind="subCount"></span><span>件产品</span>
+		</div>
+	</div>
+	</form>
+
+
+
+
+</section>
+<ng-include src="'templates/footer.html'" ></ng-include>
+</body>
+<script src="js/jquery.1.11.3.min.js"></script>
+<script src="js/angular/angular.js"></script>
+<script src="js/angular/angular-route.js"></script>
+<script src="js/layer/layer.js"></script>
+<script src="js/server.js"></script>
+<script src="js/enquiryCar.js"></script>
+</html>

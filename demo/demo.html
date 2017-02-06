@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+
+	<script type="text/javascript" src="jquery.min.js"></script>
+	<script type="text/javascript">
+	$.ajax({
+		url: 'http://103.38.252.35:8888/InterFace/CommodityInterFace.ashx',
+		type: 'POST',
+		data: {
+			"doType":"getDetail",
+			'CI_ID' : '095b13bc-9f55-4827-ae2d-1ae375f68dbc'
+		},
+	})
+	.done(function() {
+		console.log("success");
+	})
+	.fail(function() {
+		console.log("error");
+	})
+	.always(function() {
+		console.log("complete");
+	});
+	
+	</script>	
+</body>
+</html>

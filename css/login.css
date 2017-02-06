@@ -1,0 +1,58 @@
+.font18{
+	font-size:20px;
+	float: right;
+	line-height: 80px;
+
+}
+.loginfrom{
+	border:1px solid #000;
+	background:#f1f1f1;
+	color:#000;
+	min-height: 200px;
+	margin-top:20px; 
+
+}
+.loginfrom p{
+	width: 100%;
+	line-height: 160px;
+	font-size: 40px;
+	text-align: center;
+	color: #565656;
+	font-weight:bold;
+}
+.inpbox{
+	width: 350px;
+	height: 50px;
+	margin:20px auto 0;
+	border:1px solid #fafafa;
+	border-radius: 5px;
+	overflow: hidden;
+}
+.inpbox span{
+	height: 50px;
+	width: 50px;
+	line-height: 50px;
+	text-align: center;
+	color: #222;
+	float: left;
+}
+.inpbox input{
+	float: left;
+	width: 300px;
+	border:none;
+	height: 50px;
+	text-indent: 1em;
+	outline: none;
+}
+.loginfrom button{
+	height: 50px;
+	background: #c40000;
+	color:#fff;
+	width: 350px;
+	font-size: 24px;
+	display: block;
+	margin:50px auto 100px;
+	border:none;
+	border-radius: 5px;
+}
+

@@ -1,0 +1,31 @@
+<div class="gbig">
+    <div class="gtitle">询价单信息</div>
+    <div class="gnomber"><span>询价单号：</span><span>{{number}}</span></div>
+    <!--详情列表-->
+    <div class="gtable">
+        <!--列表标题-->
+        <div class="gth">
+            <div class="left glist">商品列表</div>
+            <div class="left gcode">订货编码</div>
+            <div class="left gbrand">产品品牌</div>
+            <div class="left gamount">订购数量</div>
+            <div class="left gstate">询价状态</div>
+        </div>
+        <!--列表内容-->
+        <div class="gtd" ng-repeat="item in items">
+            <div class="gproduct left glist">
+                <img ng-src="{{'http://103.38.252.35:8888' +item.CI_ImgUrl}}" alt="" class="left">
+                <p class="left">{{item.Cl_Name}}</p>
+            </div>
+            <div class="left gcode">{{item.CI_Number}}</div>
+            <div class="left gbrand">{{item.CI_Brand}}</div>
+            <div class="left gamount">{{item.IOID_Count}}</div>
+            <div class="left gstate">{{item.IOID_InquireState}}</div>
+        </div>
+        <!--状态图片-->
+        <div class="step">
+            <img ng-src="{{enquiryStateImgUrl}}" alt="" class="gstep">
+
+        </div>
+    </div>
+</div>

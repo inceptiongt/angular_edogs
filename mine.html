@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>我的页面</title>
+	<link rel="stylesheet" href="css/global.css">
+	<link rel="stylesheet" href="css/mine.css">
+	<link rel="stylesheet" href="js/layer/layer.css">
+	<link rel="stylesheet" href="js/laytate/laydate.css">
+</head>
+<body ng-app="myapp" ng-controller="allCtrl">
+	<ng-include src="'templates/header.html'" ></ng-include>
+	<ng-include src="'templates/headersub.html'" ></ng-include>
+	<!-- <section class="account">
+		<div class="content">
+			<a href="mine.html">
+			<p class="left myaccount">我的账户---一只偷猫的鱼</p>
+			</a>
+			<p class="right">
+				<a href="" class="current">全部产品分类</a>
+				<a href="">办公日用清洁</a>
+				<a href="">生产辅料</a>
+				<a href="">五金电器配件</a>
+				<a href="">IT</a>
+				<a href="">劳保</a>
+			</p>
+		</div>
+	</section> -->
+	<section class="bignav redbg">
+		<div class="content">
+			<h2 class="left">我的神狗</h2>
+			<a href="index.html">首页</a>
+			<a href="mine.html">我的神狗</a>
+			<a href="" ng-bind="yiji">定单中心</a>
+			<a class="current" ng-bind="erji">我的订单</a>
+		</div>
+	</section>
+	<section class="content mincont">
+		<section class="left">
+			<ng-include src="'templates/mineaside.html'" ></ng-include>
+		</section>
+		<section  ng-view class="left contright"></section>
+	</section>
+	<ng-include src="'templates/footer.html'" ></ng-include>
+</body>
+<script src="js/jquery.1.11.3.min.js"></script>
+<script src="js/angular/angular.js"></script>
+<script src="js/angular/angular-route.js"></script>
+<script src="js/laytate/laydate.js"></script>
+<script src="js/layer/layer.js"></script>
+<script src="js/server.js"></script>
+<script src="js/mine.js"></script>
+<script src="js/minerouter.js"></script>
+</html>

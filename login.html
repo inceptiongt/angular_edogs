@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>登入</title>
+	<link rel="stylesheet" href="css/global.css">
+	<link rel="stylesheet" href="css/login.css">
+	<link rel="stylesheet" href="js/layer/layer.css">
+	<link rel="stylesheet" href="fonts/iconfont.css">
+</head>
+<body ng-app="myapp">
+	<!-- <ng-include src="'templates/header.html'" ></ng-include> -->
+	<section ng-controller="loginCtrl" ng-app="myapp" class="content logincont">
+		<div class="content search">
+			<h1 class="logo red left">神狗超市</h1>
+			<p class="red font18">400-680-6969</p>
+		</div>
+		<div class="loginfrom">
+			<p>神狗超市</p>
+			<div class="inpbox">
+				<span class="iconfont icon-weibiaoti2"></span>
+				<input type="text" placeholder="手机号／邮箱／用户名" ng-model="userName">
+			</div>
+			<div class="inpbox">
+				<span class="iconfont icon-password"></span>
+				<input type="password" placeholder="密码（6-16位字母，数字，无空格）" ng-model="password" ng-blur="mytrim()" >
+			</div>
+			<button id="login" ng-click="login()">登入</button>
+
+		</div>
+	</section>
+	<!-- <ng-include src="'templates/footer.html'" ></ng-include> -->
+</body>
+<script src="js/jquery.1.11.3.min.js"></script>
+<script src="js/angular/angular.js"></script>
+<script src="js/angular/angular-route.js"></script>
+<script src="js/layer/layer.js"></script>
+<script src="js/server.js"></script>
+<script src="js/login.js"></script>
+</html>

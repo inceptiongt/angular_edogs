@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>商品列表</title>
+    <link rel="stylesheet" href="css/global.css">
+    <link rel="stylesheet" href="css/mine.css">
+    <link rel="stylesheet" href="js/laytate/laydate.css">
+    <style type="text/css">
+        *{
+            font-family: "Adobe Gothic Std B";
+        }
+        .sidelist {
+            font-size:18px;
+            width:190px;
+            margin-right: 15px;
+            font-color:#5C5C5C;
+        }
+        .left .sub {
+            background-color: #e4fbf3;
+            font-weight: bold;
+            font-size: 20px;
+            text-align: center;
+        }
+        .child img {
+            width:10px;
+            height:10px;
+            margin-left: 10px;
+        }
+        .left .child{
+            margin-top: 15px;
+            background-color: #F4F8FB;
+        }
+        .child .childItem{
+            border-bottom: solid 2px #b4adb0;
+            margin-top: 10px;
+            cursor:default;
+        }
+        .child .childItem dt{
+            margin-top: 10px;
+        }
+        .child .childItem .itemInfo{
+            margin-bottom: 10px;
+        }
+
+        .childItem div{
+            text-align: left;
+            padding-left:20px;
+            padding-top:5px;
+        }
+        .childItem span {
+            color:black;
+        }
+        .title{
+            width:100%;
+            height:20px;
+            color:black;
+            /*border: solid 1px #DFDFDF;*/
+        }
+        .title a{
+            /*border-right: solid 1px #DFDFDF;*/
+            color:black;
+            font-size:18px;
+            font-family:"Adobe Gothic Std B";
+            display: inline-block;
+            width:8%;
+            margin: 0;
+            box-sizing: border-box;
+            padding-right:3%;
+        }
+        .title .count{
+            width:10%;
+            text-align: right;
+        }
+
+        a.space {
+            display: inline-block;
+            width: 50%;
+        }
+        .info {
+            width: 100%;
+            display: flex;
+            flex-flow:row wrap;
+            align-content:flex-start;
+        }
+        .info .infoList {
+            flex:0 0 20%;
+            margin-right: 10px;
+            height:320px;
+            margin-top: 4%;
+        }
+        .infoList img {
+            height:229px;
+        }
+        .info div.infoList:nth-of-type(4n){
+            margin-right: 0px;
+        }
+        .info p span{
+            color: red;
+        }
+        .info p span.status{
+            font-size: 24px;
+        }
+       /* .pageListBox{
+            margin-top: 50px;
+        }*/
+         .productImg{
+            border:1px solid #ccc;
+        }
+         .productImg:hover{
+            border:1px solid red;
+        }
+        .listcurrent{
+            color:#e8c497;
+        }
+        #fenlei .current span{
+            color:red;        }
+        .infog{
+            text-align: center;
+            line-height: 90px;
+            border:1px solid #ccc;
+            margin-top: 30px;
+        }
+    </style>
+</head>
+<body ng-app="myapp" ng-controller="CommondityList">
+<ng-include src="'templates/header.html'" ></ng-include>
+<ng-include src="'templates/headersub.html'" ></ng-include>
+<section class="bignav redbg">
+        <div class="content">
+            <h2 class="left">我的神狗</h2>
+            <a href="index.html">首页</a>
+            <a href="mine.html">我的神狗</a>
+            <a href="">产品目录</a>
+            <a class="current" ng-bind="erji" id="current">我的订单</a>
+        </div>
+</section>
+<section class="content mincont">
+    <section class="left sidelist">
+        <dt class="sub">产品目录</dt>
+        <div class="child" id="fenlei">
+            <div class="childItem" ng-repeat="item in items" >
+                <dt ng-click="slide($event,item.Level1ID)" class="listcurrent">
+                    <img src="./images/up.png" alt="" >
+                    <span ng-bind="item.Level1Name"></span>
+                </dt>
+                <div id="{{item.Level1ID}}" style="display: none" class="listdetail">
+                    <dd ng-repeat="pdlist in item.CommodityTypeLevel2" ng-click="getInfo({fId:item.level1ID,sId:pdlist.CT_ID})" class="itemInfo" ng-bind="pdlist.CT_Name">
+                    </dd>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section  class="left contright">
+            <div class="title">
+                <a href="">排序:</a>
+                <a href="" class="defalut">默认</a>
+                <a href="" ng-click="sort($event,'SalesVolume')" class="sales">销量</a>
+                <a href="" ng-click="sort($event,'issuanceTime')" class="new">新品</a>
+                <a href="" class="space"></a>
+                <a class="count"><span ng-bind="count"></span>种</a>
+            </div>
+            <div class="infog" ng-if="!infoList">
+                暂无数据
+            </div>
+            <div class="info">
+                <div class ="infoList" ng-repeat="item in infoList | orderBy:order">
+                    <a href="./detail.html?{{item.CI_ID}}">
+                    <img ng-src="{{'http://103.38.252.35:8888' +item.CI_ImgUrl}}" alt="商品" class="productImg">
+                    </a>
+                    <p><span class="status">待询价</span></p>
+                        <p>含<span ng-bind="item.CI_Specifications"></span>个规格</p>
+                    <p ng-bind="item.CI_Name"></p>
+                </div>
+            </div>
+
+        <div class="pages">
+            <div class="pageListBox">
+                <a href="javascript:;" class="feui-btn feui-btn-height26 feui-btn-prev" ng-click="p_prv()">上一页</a>
+                <a href="javascript:;" class="feui-btn feui-btn-height26 feui-btn-page" ng-click="p_page(num)" ng-repeat="num in pages" ng-class={"act":p{{num}}}>{{num}}</a>
+                <a href="javascript:;" class="feui-btn feui-btn-height26 feui-btn-next" ng-click="p_next()">下一页</a>
+            </div>
+        </div>
+    </section>
+</section>
+    <ng-include src="'templates/footer.html'" ></ng-include>
+</body>
+<script src="js/jquery.1.11.3.min.js"></script>
+<script src="js/angular/angular.js"></script>
+<script src="js/angular/angular-route.js"></script>
+<script src="js/server.js"></script>
+<script src="js/layer/layer.js"></script>
+<script src="js/laytate/laydate.js"></script>
+<script src="js/CommondityList.js"></script>
+</html>

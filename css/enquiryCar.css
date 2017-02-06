@@ -1,0 +1,130 @@
+.ec-car-list{
+    font-size: 16px;
+    color:red;
+    height: 50px;
+    line-height: 50px;
+    padding-top:30px;
+    vertical-align: bottom;
+    border-bottom:1px solid #ccc;
+    padding-left:15px;
+}
+.ec-car-content .ec-select,.ec-car-content .ec-product-name,.ec-car-content .ec-product-size,.ec-car-content .ec-product-code,.ec-car-content .ec-product-amount,.ec-car-content .ec-operation{
+    width: 16.6%;
+    height: 100%;
+    text-align: center;
+}
+.ec-contact-cell.ec-name{
+    position: relative;
+}
+.ec-name input.name {
+    width:50%;
+}
+select{
+     position:absolute;
+     left:78%;
+     top:15%;
+     width:20%;
+     height:50px;
+     line-height:50px;
+     text-align: center;
+}
+.sex{
+    height: 50px;
+}
+.ec-car-list-titel{
+    height: 70px;
+    line-height: 70px;
+    font-size: 14px;
+    border-bottom:1px solid #ccc;
+}
+.ec-car-list-content{
+    height: 110px;
+    line-height: 110px;
+    font-size: 14px;
+    background-color: #FDF9E5;
+}
+.ec-car-list-content .ec-product-name{
+    line-height:20px;
+    padding-top:30px;
+    height: 80px;
+}
+.ec-car-list-content .ec-select{
+    padding-top:15px;
+    height: 95px;
+}
+.ec-car-list-content .ec-select input{
+    vertical-align: top;
+}
+.ec-car-list-content .ec-product-amount{
+    position: relative;
+}
+.ec-car-list-content .ec-product-amount input{
+    width: 50%;
+    height: 23px;
+    position: absolute;
+    top: 36px;
+    right: 49px;
+    border:1px solid #ccc;
+    text-align: center
+}
+.ec-car-list-content .ec-product-amount .plus{
+    margin-right:50%;
+}
+.ec-define-content{
+    padding-left: 30px;
+    font-size: 16px;
+}
+.ec-define-content .ec-upload-file{
+    height: 80px;
+    line-height: 80px;
+}
+.ec-define-content .ec-order-tips span{
+    vertical-align: top;
+}
+.ec-define-content .ec-order-tips textarea{
+    width: 810px;
+}
+.ec-contact-content{
+    width: 530px;
+    margin: 0 auto;
+    margin-bottom:50px;
+}
+.ec-contact-content input{
+    height: 50px;
+    width: 380px;
+}
+.ec-contact-content .ec-contact-cell{
+    height: 70px;
+    line-height: 70px;
+    font-size: 16px;
+}
+.ec-contact-content .ec-contact-left-span{
+    display: inline-block;
+    width: 110px;
+    -ms-text-align-last: right;
+    text-align-last: right;
+}
+.ec-goto-enquiry{
+    background-color: #FDF9E5;
+    overflow: hidden;
+}
+.ec-goto-enquiry .ec-btn{
+    width: 160px;
+    height: 60px;
+    color:#fff;
+    background-color: #ff0000;
+    font-size: 18px;
+    text-align: center;
+    line-height:60px;
+    border: none;
+}
+.ec-goto-enquiry .ec-goto-font{
+    font-size: 14px;
+    height: 60px;
+    line-height: 60px;
+    width: 180px;
+    text-align: center;
+}
+.ec-goto-enquiry .ec-goto-font .ec-goto-num{
+    color:#ff0000;
+}

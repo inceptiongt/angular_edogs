@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>电商录播图</title>
+	<link rel="stylesheet" href="css/global.css">
+	<link rel="stylesheet" href="css/index.css">
+	<link rel="stylesheet" href="fonts/iconfont.css">
+</head>
+<body ng-app="myapp" ng-controller="indexController">
+	<ng-include src="'templates/header.html'" ></ng-include>
+	<div class="main-wrap w1190 clearfix">
+		<div class="myleft">
+			<div class="cate-wrap" ng-class="{autoheight:cateflag}">
+				<h3>商品分类</h3>
+				<div class="items" ng-repeat="data in AllTypeList" ng-mouseenter="enter(data)" ng-mouseleave="leave()"  on-finish-render>
+					<span ng-bind="data.Level1Name"></span>	
+					<div class="arrow iconfont icon-jiantouyou"></div>
+				</div>
+				<span ng-click="toggleCateflag()" ng-show="cateindex" class="under-arrow iconfont icon-jiantou"></span>
+			</div>
+			<div class="nav-wrap" ng-mouseenter="enterLeave=true" ng-mouseleave="leave()"  ng-show="enterLeave">
+				<p>分类：</p>							
+				<div class="nav-items">
+					
+					<span ng-repeat="items in cateData"  class="items">
+						<a ng-href="{{'CommodityList.html?SearchWord='+items.CT_Name}}" ng-bind="items.CT_Name" style="color:inherit;"></a>
+					</span>
+					
+				</div>
+			</div>
+		</div>
+		<div class="center">
+			<div id="slideBox" class="slideBox">
+				<div class="hd">
+					<ul><li></li><li></li></ul>
+				</div>
+				<div class="bd">
+					<ul>
+						<li ng-repeat="rollItems in MainRollimg">
+							<a href="rollItems.MR_PageToUrl"><img ng-src="{{rollItems.MR_ImgUrl}}"/></a>
+						</li>
+					</ul>
+				</div>
+
+				<!-- 下面是前/后按钮代码，如果不需要删除即可 -->
+				<a class="prev" href="javascript:void(0)"></a>
+				<a class="next" href="javascript:void(0)"></a>
+
+			</div>
+		</div>
+		<div class="myright">
+			<div class="login-wrap" ng-hide="!logined">
+				<div class="img-wrap"><img src="" alt=""></div>
+				<p class="user-name">HI,<span ng-bind="myuser.CI_Name">大帅哥</span></p>
+				<p class="user-info">我的询价篮</p>
+				<p class="user-pri">
+					<a href="#">我的询价篮</a>
+					<a href="mine.html#/enquiry" class="baojia">我的询价单</a>
+					<a href="/mine.html#/" >我的订单</a>
+				</p>
+				<div class="btn-wrap clearfix">
+					<button ng-click="outlogin()" class="fr">退出登录</button>
+				</div>
+			</div>
+			<div class="unlogin-box" ng-hide="logined">
+				<h3>用户登录</h3>
+				<div class="user-info">
+					<p class="wrap iconfont icon-weibiaoti2">
+						<input class="username-info" ng-model="userName"  type="text" placeholder="手机号/邮箱/用户名">
+					</p>
+					<p class="wrap iconfont icon-password">
+						<input class="password-info" ng-model="password" type="password" placeholder="密码（6-16位字母，数字，无空格）">
+					</p>
+					<p>
+						<button class="login-btn" ng-click="login()">登录</button>
+					</p>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<div class="product-wrap">
+		<div class="w1190" ng-repeat="allDate in CommodityList" ng-init="outindex=$index">
+			<div class="product-items">
+				<div class="product-t">
+					<p class="item-t" ng-bind="allDate.TypeName"></p>
+				</div>
+				<div class="cate-wrap clearfix">
+					<span class="cate-all fl">
+						分类：
+					</span>
+					<div class="fl cate-items">
+						<a ng-href="{{'CommodityList.html?SearchWord='+items.CT_Name+'&yiji='+outindex}}" ng-repeat="items in allDate.CommodityListLevel" ng-bind="items.CT_Name"></a>
+					</div>
+				</div>
+				<div class="product-item">
+					<ul class="clearfix">
+						<li class="fl items" ng-repeat="itemData in allDate.CommodityList">
+							<div class="proimg-wrap">
+								<a href="./detail.html?{{itemData.CI_ID}}">
+									<img ng-src="{{'http://103.38.252.35:8888' + itemData.CI_ImgUrl}}"  alt="">
+								</a>
+							</div>
+							<p class="pro-name one-txt-cut" ng-bind="itemData.CI_Name"></p>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+	<ng-include src="'templates/footer.html'" ></ng-include>
+	<script type="text/javascript" src="js/jquery.1.11.3.min.js"></script>
+	<script type="text/javascript" src="js/jquery.SuperSlide.2.1.1.js"></script>
+	<script src="js/angular/angular.js"></script>
+	<script src="js/angular/angular-route.js"></script>
+	<script src="js/layer/layer.js"></script>
+	<script src="js/server.js"></script>
+	<script src="js/index.js"></script>
+</body>
+</html>

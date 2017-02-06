@@ -1,0 +1,52 @@
+<div class="wuliu">
+<p class="wuliutitle">我的物流</p>		
+<ul class="wuliulist">
+	<li ng-class="{current:minemassage.OI_State=='备货中'}">备货中</li>
+	<li ng-class="{current:minemassage.OI_State=='备货完成'}">备货完成</li>
+	<li ng-class="{current:minemassage.OI_State=='发货中'}">发货中</li>
+	<li ng-class="{current:minemassage.OI_State=='已签收'}">已签收</li>
+	<li ng-class="{current:minemassage.OI_State=='已开票'}">已开票</li>
+	<li class="lastli" ng-class="{current:minemassage.OI_State=='已收款'}">已收款</li>
+</ul>
+</div>
+<div class="adress">
+	<table border="0" cellspacing="0" cellpadding="0" class="firstT">
+		<thead>
+			<td>送货地址</td>
+			<td>联系人</td>
+			<td>联系方式</td>
+			<td>物流公司</td>
+			<td>快递单号</td>
+		</thead>
+		<tr>
+			<td><p ng-bind="minemassage.OI_DeliveryAddress">上海市普陀区长风新村街道9口脑神经科</p></td>
+			<td ng-bind="minemassage.OI_Contacter">丈夫生</td>
+			<td ng-bind="minemassage.OI_DeliveryPhoneNum">17900001111</td>
+			<td ng-bind="minemassage.OI_DeliveryCompany+'快递'">顺丰快递</td>
+			<td ng-bind="minemassage.OI_Number">7897689789889</td>
+		</tr>
+	</table>
+	<table border="0" cellspacing="0" cellpadding="0" class="secondT">
+		<thead>
+			<td>商品列表</td>
+			<td>订货编码</td>
+			<td>产品品牌</td>
+			<td>含税单价（元）</td>
+			<td>订购数量</td>
+			<td>含税小计（元）</td>
+		</thead>
+		<tr ng-repeat="items in minemassage.Detail">
+			<td class="haveimg"><span><img ng-src="{{'http://103.38.252.35:8888' +items.CI_ImgUrl}}" alt="" width="82"></span>
+			<p class="_content" ng-bind="items.CI_Name">
+			上海市普陀区长风新村街道9口脑神经科
+			</p>
+			</td>
+			<td ng-bind="items.CI_Number">ay5679</td>
+			<td ng-bind="items.CI_Brand">ARROW/箭牌</td>
+			<td ng-bind="items.OID_Price">300</td>
+			<td ng-bind="items.OID_Count">10</td>
+			<td ng-bind="items.AllPrice">1099</td>
+		</tr>
+	</table>
+	<p class="allmoney">订单总额：<span class="red" ng-bind="minemassage.OI_TotalMoney">11500</span></p>	
+</div>	

@@ -1,0 +1,26 @@
+<section>
+<div class="header redbg">
+	<div class="content">
+		<p class="left">欢迎光临神狗工业超市！ 您好！</p>
+		<p class="right"> <a href="mine.html">我的神狗</a> <span> 400-680-9696</span></p>
+	</div>
+</div>
+<div class="content search">
+	<a href="index.html">
+	<h1 class="logo red left">神狗超市</h1>
+	</a>
+	<div class="searchBox left">
+		<input type="text" placeholder="按照名称，品牌，规格搜索" class="left" id="searchWd"><button class="right" id="search">搜索</button>
+	</div>
+	<a href="enquiryCar.html">
+	<div class="xunjiacar right">
+		询价篮
+	</div>
+	</a>
+</div>
+</section>
+<script>
+	$("#search").click(function(){
+		location.href="/CommodityList.html?SearchWord="+$("#searchWd").val();
+	})
+</script>

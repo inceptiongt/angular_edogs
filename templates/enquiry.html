@@ -1,0 +1,87 @@
+<div>
+	<span class="red">我的询价单</span>
+	<div class="ordersearch">
+		<span>日期:</span>
+		<input type="text" placeholder="输入起始时间" class="laydate-icon" def-laydate id="id3" ng-model="timeStart"> 
+		<span>至</span>
+		<input type="text" placeholder="输入结束时间" class="laydate-icon" def-laydate id="id4" ng-model="timeEnd"> 
+		<span>或</span>
+		<input type="text" placeholder="输入订单号" ng-model="orderNo"> <button ng-click="update()">查询</button>
+	</div>
+</div>
+<div class="adress">
+	
+	<table border="0" cellspacing="0" cellpadding="0" class="orderT myorderlist">
+		<thead>
+			<td colspan="2">询价单信息</td>
+			<td>日期</td>
+			<td>
+				<select ng-model="zhuangtai">
+					<option value="全部状态">全部状态</option>
+					<option value="备货中">备货中</option>
+					<option value="备货完成">备货完成</option>
+					<option value="发货中">发货中</option>
+					<option value="已签收">已签收</option>
+					<option value="已开票">已开票</option>
+					<option value="已收款">已收款</option>
+				</select>
+			</td>
+			<td>操作</td>
+		</thead>
+
+	</table>
+		<ul ng-repeat="items in item" ng-hide="p[$index]">
+		<li class="ordermassage" class="lititle">
+			<span class="xunjiaorder">
+				询价单号：{{items.IOI_Number}}
+			</span>
+			<span class="xunjiar">
+				询价人：{{items.IOI_Inquirer}}
+			</span>
+			<span ng-bind="items.IOI_CreateTime" style="width: 266px;display: inline-block;">
+				2016-10-24 18:25
+			</span>
+			<span ng-bind="items.statecn">
+			</span>
+			<!-- <td></td>
+			<td></td> -->
+		</li>
+		<div class="myul">
+		<li ng-repeat="itemss in items.Commodity" class="repeatli">
+			<div class="haveimg ordertd noborder" ><span><img ng-src="{{'http://103.38.252.35:8888' +itemss.CI_ImgUrl}}" alt="" width="58"></span>
+			<p class="_content" ng-bind="itemss.CI_Name">
+			上海市普陀区长风新村街道9口脑神经科
+			</p>
+			</div>
+			<p>x {{itemss.IOID_Count}}</p>
+			<p class="isdanger">是否危险物品：<span class="red" ng-if="itemss.IsDanger">是</span> <span ng-if="!itemss.IsDanger">否</span></p>
+			<p ng-if="itemss.state==0">未询价</p>
+			<p ng-if="itemss.state==1">询价中</p>
+			<p ng-if="itemss.state==2">已询价</p>
+			<!-- <td rowspan=items.Commodity.length class="deleat">
+				<a href="">查看</a>
+				<button>删除</button>
+			</td> -->
+		</li>
+		<div class="deleatbox">
+			<p class="deleat">
+				<a ng-href="{{'mine.html#/enquiryDetail/'+items.IOI_ID}}">查看</a>
+				<button ng-click="delateli(items.IOI_ID,$index)">删除</button>
+			</p>
+		</div>
+		</div>
+		<!-- <tr>
+			<td class="haveimg ordertd" colspan=""><span><img src="images/logo.jpg" alt="" width="58"></span>
+			<p class="_content">
+			上海市普陀区长风新村街道9口脑神经科
+			</p>
+			</td>
+			<td>x 3</td>
+			<td>是否危险物品：<span class="red">是</span></td>
+			<td>待报价</td>
+		</tr> -->
+		</ul>
+		
+	
+	<div class="nodata" ng-if="item2.length==0">暂无数据</div>		
+</div>

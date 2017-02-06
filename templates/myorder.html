@@ -1,0 +1,91 @@
+<div>
+	<span class="red">我的订单</span>
+	<div class="ordersearch">
+		<span>日期:</span>
+		<input type="text" placeholder="输入起始时间" class="laydate-icon" def-laydate id="id1" ng-model="timeStart"> 
+		<span>至</span>
+		<input type="text" placeholder="输入结束时间" class="laydate-icon" def-laydate id="id2" ng-model="timeEnd"> 
+		<span>或</span>
+		<input type="text" placeholder="输入订单号" ng-model="orderNo"> <button ng-click="update()">查询</button>
+	</div>
+</div>
+<div class="adress">
+	<table border="0" cellspacing="0" cellpadding="0" class="firstT ordertitle">
+		<thead>
+			<td>订单详情</td>
+			<td>收货人</td>
+			<td>含税总额</td>
+			<td>日期</td>
+			<td>
+				<select ng-change="update()" ng-model="zhuangtai">
+					<option value="全部状态">全部状态</option>
+					<option value="备货中">备货中</option>
+					<option value="备货完成">备货完成</option>
+					<option value="发货中">发货中</option>
+					<option value="已签收">已签收</option>
+					<option value="已开票">已开票</option>
+					<option value="已收款">已收款</option>
+
+				</select>
+			</td>
+			<td>操作</td>
+		</thead>
+	</table>
+	
+	<table border="0" cellspacing="0" cellpadding="0" class="secondT orderT" ng-repeat="items in item">
+		<thead>
+			<td>订单号：{{items.OI_ID}}</td>
+			<td ng-bind="items.OI_Contacter">丈夫生</td>
+			<td ng-bind="items.OI_TotalMoney">3500</td>
+			<td ng-bind="items.OI_Number/1000|mynumber">20160612</td>
+			<td ng-bind="items.OI_StateCn">备货中</td>
+			<td><a ng-href="{{'mine.html#/logistics/'+items.OI_ID}}" class="godetail">查看详情</a></td>
+		</thead>
+		<tr ng-repeat="itemlist in items.Commodity">
+			<td class="haveimg ordertd" colspan="6"><span><img ng-src="{{'http://103.38.252.35:8888' +itemlist.CI_ImgUrl}}"" alt="" width="58"></span>
+			<p class="_content" ng-bind="itemlist.CI_Name">
+			上海市普陀区长风新村街道9口脑神经科
+			</p>
+			</td>
+		</tr>
+		<!-- <tr>
+			<td class="haveimg ordertd" colspan="6"><span><img src="images/logo.jpg" alt="" width="58"></span>
+			<p class="_content">
+			上海市普陀区长风新村街道9口脑神经科
+			</p>
+			</td>
+		</tr> -->
+	</table>
+	<div class="nodata" ng-if="item2.length==0">暂无数据</div>
+	<!-- <table border="0" cellspacing="0" cellpadding="0" class="secondT orderT">
+		<thead>
+			<td>订单号：2015678973788</td>
+			<td>丈夫生</td>
+			<td>3500</td>
+			<td>20160612</td>
+			<td>备货中</td>
+			<td><a href=""></a>查看</td>
+		</thead>
+		<tr>
+			<td class="haveimg ordertd" colspan="6"><span><img src="images/logo.jpg" alt="" width="58"></span>
+			<p class="_content">
+			上海市普陀区长风新村街道9口脑神经科
+			</p>
+			</td>
+		</tr>
+		<tr>
+			<td class="haveimg ordertd" colspan="6"><span><img src="images/logo.jpg" alt="" width="58"></span>
+			<p class="_content">
+			上海市普陀区长风新村街道9口脑神经科
+			</p>
+			</td>
+		</tr>
+	</table>		 -->
+</div>
+<div class="pages">
+		<div class="pageListBox">
+		<a href="javascript:;" class="feui-btn feui-btn-height26 feui-btn-prev" ng-click="p_prv()">上一页</a>
+		<a href="javascript:;" class="feui-btn feui-btn-height26 feui-btn-page" ng-click="p_page(num)" ng-repeat="num in pages" ng-class={"act":p{{num}}}>{{num}}</a>
+		<a href="javascript:;" class="feui-btn feui-btn-height26 feui-btn-next" ng-click="p_next()">下一页</a>
+		</div>
+	</div>

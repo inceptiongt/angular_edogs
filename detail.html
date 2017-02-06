@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>神狗详情页</title>
+	<link rel="stylesheet" href="css/global.css">
+	<link rel="stylesheet" href="css/detail.css">
+	<link rel="stylesheet" href="fonts/iconfont.css">
+</head>
+<body ng-app="myapp" ng-controller="detailController">
+	<ng-include src="'templates/header.html'" ></ng-include>
+	<div class="w1190 detail-wrap clearfix">
+		<div class="myleft fl">
+			<div class="preview">
+				<div id="vertical" class="bigImg">
+					<img ng-src="{{'http://103.38.252.35:8888' + bigImg[0]}}" alt="" id="midimg" />
+					<div style="display:none;" id="winSelector"></div>
+				</div><!--bigImg end-->	
+				<div class="smallImg">
+					<div id="imageMenu">
+						<ul>
+							<!-- id="onlickImg" -->
+							<li ng-repeat="smallImgItem in smallImg" data-index="{{$index}}" on-finish-render>
+								<img ng-src="{{'http://103.38.252.35:8888' + smallImgItem}}" width="68" height="68" />
+							</li>
+						</ul>
+					</div>
+				</div><!--smallImg end-->	
+				<div id="bigView" style="display:none;"><img width="800" height="800" alt="" ng-src="{{'http://103.38.252.35:8888' + bigImg[0]}}"  /></div>
+			</div>
+		</div>
+		<div class="myright fr">
+			<h2 ng-bind="detailMsgh.CI_Name">抗疲劳防静电工鞋</h2>			
+			<div class="pro-info">
+				<p>
+					<span>价格：</span>
+					<span class="ml20 c-main">待询价</span>
+				</p>
+				<p>
+					<span>品牌：</span>
+					<span class="ml20" ng-bind="detailMsgh.CI_Brand">神狗</span>
+				</p>
+			</div>
+			<div class='tel-wrap'>
+				<span class="iconfont icon-dianhua">联系电话：&nbsp;&nbsp;{{detailMsgh.CI_Number}}</span>
+				<!-- <span class="ml20">分销合作热线：&nbsp;&nbsp;&nbsp;&nbsp;021-12345678</span> -->
+			</div>
+			<div class="btn-wrap">
+				<button ng-click="xunjia()">询价</button>
+			</div>
+		</div>
+	</div>
+	<div class="w1190 pro-details">
+		<div class="pro-details-h">
+			<ul class="clearfix">
+				<li class="fl active">产品介绍</li>
+			</ul>
+		</div>
+		<div class="pro-details-b">
+			<div class="bus-explain">
+				<div class="explain-t">
+					<h3>商品说明</h3>
+					<p>COMMODITY DESCRIPTION</p>
+				</div>
+				<div class="line"></div>
+				<p class="explain-txt" ng-bind="detailMsgh.CI_Explain"></p>
+			</div>
+
+			<div class="bus-imgwrap">
+				<p class="mt20 f18">实拍图</p>
+				<div class="line"></div>
+				<p class="f14">MAKING PLANS</p>
+				<img ng-src="{{'http://103.38.252.35:8888'+bigimg}}" alt="" ng-repeat="bigimg in bigImg" style="display: block;margin:10px auto 0">
+			</div>
+
+			<!-- <div class="bus-imgwrap">
+				<p class="mt20 f18">产品图展示</p>
+				<div class="line"></div>
+				<p class="f14">PRODUCT CHART DISPLAY</p>
+				<div class="detail-img-wrap">
+					<div class="reming">
+						REMING:
+						<p>图片由于拍摄灯光，摄像机等器材原因！</p>
+						<p>极有可能造成图片与产品的实际颜色存在细微的差异，请给予谅解，颜色以实物为准</p>
+					</div>
+					<img src="" alt="">
+				</div>
+			</div> -->
+
+			<div class="details-footer">
+				<div class="gd-contact clearfix">
+					<div class="gb-contact-btn">
+						<div class="btn">
+							400-680-9696
+						</div>
+					</div>
+					<div class="gb-contact-btn">
+						<div class="btn">
+							info@zkh360.com
+						</div>
+					</div>
+					<div class="gb-contact-btn">
+						<div class="btn">
+							021-5080-1996
+						</div>
+					</div>
+				</div>
+				<div class="about">
+					<h3>关于神狗</h3>
+					<p>神狗（GodDog）---全称为神狗工业超市。是一个专业铸就自信，着眼长远发展。并且乐于承担社会责任的团队，竭诚期待与你合作</p>
+				</div>
+				<div class="guarantee">
+					<h3>正品保证</h3>
+					<p>神狗工业超市向您保证所售商品均为正品行货，开具正规发票。</p>
+				</div>
+			</div>
+		</div>
+	</div>
+	<ng-include src="'templates/footer.html'" ></ng-include>
+	<script src="js/jquery.1.11.3.min.js"></script>
+	<script src="js/angular/angular.js"></script> 
+	<script src="js/angular/angular-route.js"></script>
+	<script src="js/layer/layer.js"></script>
+	<script src="js/server.js"></script>
+	<script src="js/detail.js"></script>
+</body>
+</html>
